@@ -3,6 +3,7 @@ package com.example.kakaoimglibrary.search
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.kakaoimglibrary.bookmark.BookmarkModel
 import java.util.concurrent.atomic.AtomicLong
 
 class SearchViewModel(private val idGenerate: AtomicLong) : ViewModel() {
@@ -27,11 +28,14 @@ class SearchViewModel(private val idGenerate: AtomicLong) : ViewModel() {
         }
     }
 
-    fun modifySearchItem(searchModel: SearchModel, position: Int){
+    fun modifySearchModel(searchModel: SearchModel, position: Int?){
         val currentList = list.value.orEmpty().toMutableList()
-        currentList[position] = searchModel
+        val findPosition = position ?: currentList.findIndex(searchModel)
+        currentList[findPosition] = searchModel
         _list.value = currentList
     }
 
-
+    fun List<SearchModel>.findIndex(searchModel: SearchModel): Int {
+        return indexOfFirst { it.id == searchModel.id } // indexOfFirst : 가장 먼저 찾는 값 | 없으면 -1 return
+    }
 }
