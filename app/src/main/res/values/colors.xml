@@ -8,5 +8,6 @@
     <color name="kakao_point_blue_selected">#BFC9D8</color>
     <color name="transparent">#00ff0000</color>
     <color name="under_line_white_grey">#AAAAAA</color>
+    <color name="bookmark_title_grey">#646a72</color>
 
 </resources>
