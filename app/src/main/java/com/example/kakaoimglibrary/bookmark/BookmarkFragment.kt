@@ -1,16 +1,19 @@
-package com.example.kakaoimglibrary
+package com.example.kakaoimglibrary.bookmark
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.kakaoimglibrary.R
 
-class SearchFragment : Fragment() {
+
+class BookmarkFragment : Fragment() {
 
     companion object{
-        fun newInstance() = SearchFragment()
+        fun newInstance() = BookmarkFragment()
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +25,7 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        return inflater.inflate(R.layout.fragment_bookmark, container, false)
     }
 
 }

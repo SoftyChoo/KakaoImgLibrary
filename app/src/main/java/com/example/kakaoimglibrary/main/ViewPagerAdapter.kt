@@ -1,8 +1,11 @@
-package com.example.kakaoimglibrary
+package com.example.kakaoimglibrary.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.kakaoimglibrary.R
+import com.example.kakaoimglibrary.search.SearchFragment
+import com.example.kakaoimglibrary.bookmark.BookmarkFragment
 
 class ViewPagerAdapter(
     fragmentActivity: FragmentActivity

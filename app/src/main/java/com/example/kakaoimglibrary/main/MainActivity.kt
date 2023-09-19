@@ -1,8 +1,9 @@
-package com.example.kakaoimglibrary
+package com.example.kakaoimglibrary.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import com.example.kakaoimglibrary.search.SearchFragment
 import com.example.kakaoimglibrary.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 

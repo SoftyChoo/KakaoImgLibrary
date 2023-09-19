@@ -2,4 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="kakao_background">#f1f3f5</color>
+    <color name="kakao_point_yellow">#f9ec71</color>
+    <color name="kakao_point_blue">#3F80D6</color>
+    <color name="kakao_point_blue_selected">#BFC9D8</color>
+    <color name="transparent">#00ff0000</color>
+    <color name="under_line_white_grey">#AAAAAA</color>
+
 </resources>
