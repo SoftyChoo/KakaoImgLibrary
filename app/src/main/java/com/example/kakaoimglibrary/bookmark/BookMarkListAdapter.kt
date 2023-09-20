@@ -57,7 +57,7 @@ class BookMarkListAdapter(
             btnBookmark.setOnClickListener { isSelected ->
                 onBookmarkChecked(
                     item.copy(
-                        isBookmark = item.isBookmark
+                        isBookmark = !item.isBookmark
                     ),
                     adapterPosition
                 )
