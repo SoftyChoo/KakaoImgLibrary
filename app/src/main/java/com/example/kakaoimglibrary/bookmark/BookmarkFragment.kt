@@ -29,8 +29,8 @@ class BookmarkFragment : Fragment() {
     private val listAdapter: BookMarkListAdapter by lazy {
         BookMarkListAdapter(
             onBookmarkChecked = { item, position ->
-//                removeBookmarkItem(item,position)
-//                modifyToSearchTab(item,EntryType.EDIT.name)
+                removeBookmarkItem(item,position)
+                modifyToSearchTab(item,EntryType.EDIT.name)
             }
         )
     }
@@ -65,9 +65,9 @@ class BookmarkFragment : Fragment() {
     private fun removeBookmarkItem(bookmarkModel: BookmarkModel, position: Int?) {
         viewModel.removeBookmarkItem(bookmarkModel,position)
     }
-//    private fun modifyToSearchTab(item: BookmarkModel, name: String) {
-//        activityViewModel.updateSearchState(item,name)
-//    }
+    private fun modifyToSearchTab(item: BookmarkModel, name: String) {
+        activityViewModel.updateSearchState(item,name)
+    }
 
     private fun initModel() = with(viewModel) {
         viewModel.list.observe(viewLifecycleOwner, Observer {

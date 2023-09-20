@@ -2,7 +2,7 @@ package com.example.kakaoimglibrary.search
 
 import com.example.kakaoimglibrary.model.ImageSearchModel
 import com.example.kakaoimglibrary.importAPI.RetrofitClient
-import com.example.kakaoimglibrary.model.ResponseModel
+import com.example.kakaoimglibrary.model.SearchModel
 import com.example.kakaoimglibrary.model.VideoSearchModel
 import retrofit2.Response
 
@@ -15,8 +15,8 @@ class Repository {
         return RetrofitClient.api.searchVideo(query = query, sort = sort, page = 2, size = 10)
     }
 
-    suspend fun responseData(query: String, sort: String): MutableList<ResponseModel> {
-        val responseList: MutableList<ResponseModel> = mutableListOf() // img, video 통합할 리스트 생성
+    suspend fun responseData(query: String, sort: String): MutableList<SearchModel> {
+        val responseList: MutableList<SearchModel> = mutableListOf() // img, video 통합할 리스트 생성
         val getImageApi = searchImage(query, sort)
         val getVideoApi = searchVideo(query, sort)
 
@@ -34,12 +34,12 @@ class Repository {
         return responseList
     }
 
-    private fun MutableList<ImageSearchModel.Documents>.imageToResponseModel(): MutableList<ResponseModel> {
-        val list: MutableList<ResponseModel> = mutableListOf()
+    private fun MutableList<ImageSearchModel.Documents>.imageToResponseModel(): MutableList<SearchModel> {
+        val list: MutableList<SearchModel> = mutableListOf()
         for (i in 0 until this.size) {
             list.add(
                 i,
-                ResponseModel(
+                SearchModel(
                     title = this[i].display_sitename,
                     dateTime = this[i].datetime,
                     thumbnailUri = this[i].image_url
@@ -49,12 +49,12 @@ class Repository {
         return list
     }
 
-    private fun MutableList<VideoSearchModel.Documents>.videoToResponseModel(): MutableList<ResponseModel> {
-        val list: MutableList<ResponseModel> = mutableListOf()
+    private fun MutableList<VideoSearchModel.Documents>.videoToResponseModel(): MutableList<SearchModel> {
+        val list: MutableList<SearchModel> = mutableListOf()
         for (i in 0 until this.size) {
             list.add(
                 i,
-                ResponseModel(
+                SearchModel(
                     title = this[i].title,
                     dateTime = this[i].datetime,
                     thumbnailUri = this[i].thumbnail

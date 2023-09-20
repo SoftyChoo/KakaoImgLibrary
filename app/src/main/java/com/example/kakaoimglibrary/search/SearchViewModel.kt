@@ -4,15 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kakaoimglibrary.model.ResponseModel
+import com.example.kakaoimglibrary.model.SearchModel
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
     private val repository: Repository
 ) : ViewModel() {
 
-    private val _list : MutableLiveData<List<ResponseModel>> = MutableLiveData()
-    val list : LiveData<List<ResponseModel>> get()= _list
+    private val _list : MutableLiveData<List<SearchModel>> = MutableLiveData()
+    val list : LiveData<List<SearchModel>> get()= _list
 
 //    private var metadata : ImageSearchModel.MetaData? = null
 
@@ -26,14 +26,21 @@ class SearchViewModel(
         }
     }
 
-    fun modifyList(item: ResponseModel, position: Int?) {
+    fun modifyList(item: SearchModel, position: Int?) {
         val currentList = list.value?.toMutableList()
 
-        if (position == null) return
-        currentList?.set(position, item)
+        val findPosition = position ?: findIndex(item)
+        findPosition?.let { currentList?.set(it, item) }
         _list.value = currentList
     }
 
+    fun findIndex(searchModel: SearchModel) : Int?{
+        val currentList = list.value?.toMutableList()
+        val findByURL = currentList?.find {
+            it.thumbnailUri == searchModel.thumbnailUri
+        }
+        return currentList?.indexOf(findByURL)
+    }
 
 //    fun searchItems(searchText : String){
 //        viewModelScope.launch {

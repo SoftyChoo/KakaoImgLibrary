@@ -13,7 +13,7 @@ import com.example.kakaoimglibrary.databinding.FragmentSearchBinding
 import com.example.kakaoimglibrary.main.EntryType
 import com.example.kakaoimglibrary.main.SearchState
 import com.example.kakaoimglibrary.main.SharedViewModel
-import com.example.kakaoimglibrary.model.ResponseModel
+import com.example.kakaoimglibrary.model.SearchModel
 
 class SearchFragment : Fragment() {
     companion object {
@@ -74,22 +74,22 @@ class SearchFragment : Fragment() {
         list.observe(viewLifecycleOwner, Observer {
             listAdapter.submitList(it)
         })
-//        activityViewModel.searchState.observe(viewLifecycleOwner, Observer { state ->
-//            when(state){
-//                is SearchState.modifySearch -> modifySearchItem(state.searchModel, null)
-//            }
-//        })
+        activityViewModel.searchState.observe(viewLifecycleOwner, Observer { state ->
+            when(state){
+                is SearchState.modifySearch -> modifySearchItem(state.searchModel, null)
+            }
+        })
     }
 
-    private fun modifySearchItem(item: ResponseModel, position: Int?) {
+    private fun modifySearchItem(item: SearchModel, position: Int?) {
         viewModel.modifyList(item, position)
     }
 
-    private fun removeToBookmarkTab(item: ResponseModel, name: String) {
+    private fun removeToBookmarkTab(item: SearchModel, name: String) {
         activityViewModel.updateBookmarkState(item,name)
     }
 
-    private fun addToBookmarkTab(item: ResponseModel, name: String) {
+    private fun addToBookmarkTab(item: SearchModel, name: String) {
         activityViewModel.updateBookmarkState(item,name)
     }
 

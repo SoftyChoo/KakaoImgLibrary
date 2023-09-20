@@ -5,14 +5,14 @@ import com.example.kakaoimglibrary.bookmark.BookmarkModel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ResponseModel(
+data class SearchModel(
     val title: String,
     val dateTime: String,
     val thumbnailUri: String,
     val isBookmark: Boolean = false
 ) : Parcelable
 
-fun ResponseModel.toBookmarkModel(): BookmarkModel {
+fun SearchModel.toBookmarkModel(): BookmarkModel {
     return BookmarkModel(
         title = title,
         dateTime = dateTime,
@@ -20,3 +20,5 @@ fun ResponseModel.toBookmarkModel(): BookmarkModel {
         isBookmark = isBookmark
     )
 }
+
+
