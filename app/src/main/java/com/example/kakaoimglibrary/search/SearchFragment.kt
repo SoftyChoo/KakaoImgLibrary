@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.kakaoimglibrary.databinding.FragmentSearchBinding
-import com.example.kakaoimglibrary.main.EntryType
 import com.example.kakaoimglibrary.main.SearchState
 import com.example.kakaoimglibrary.main.SharedViewModel
 
@@ -60,7 +59,7 @@ class SearchFragment : Fragment() {
 
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let { viewModel.searchImage(it) }
+                query?.let { viewModel.searchItems(it) }
                 return false
             }
             override fun onQueryTextChange(newText: String?): Boolean {

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kakaoimglibrary.R
 import com.example.kakaoimglibrary.databinding.ImageItemBinding
-import com.example.kakaoimglibrary.importAPI.ImageSearchModel
+import com.example.kakaoimglibrary.model.ImageSearchModel
 
 class SearchListAdapter(
     private val onBookmarkChecked: (ImageSearchModel.Documents, Int) -> Unit
@@ -49,7 +49,7 @@ class SearchListAdapter(
         fun bind(item: ImageSearchModel.Documents) = with(binding) {
             tvTitle.text = item.display_sitename
             tvTime.text = item.datetime
-            Glide.with(itemView).load(item.thumbnail_url)
+            Glide.with(itemView).load(item.image_url)
                 .placeholder(R.drawable.test_cat) // 이미지를 로딩하기 전
                 .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
                 .into(ivItem)

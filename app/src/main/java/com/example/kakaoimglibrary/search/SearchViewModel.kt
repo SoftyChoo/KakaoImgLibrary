@@ -1,13 +1,11 @@
 package com.example.kakaoimglibrary.search
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kakaoimglibrary.importAPI.ImageSearchModel
+import com.example.kakaoimglibrary.model.ImageSearchModel
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class SearchViewModel(
     private val repository: Repository
@@ -18,12 +16,17 @@ class SearchViewModel(
 
     private var metadata : ImageSearchModel.MetaData? = null
 
-    fun searchImage(searchText : String){
+    fun searchItems(searchText : String){
         viewModelScope.launch {
-            val response = repository.searchImage(searchText,"recency")
-            val body = response.body()
-            _myPosts.value = body?.documents
-            metadata = body?.metaData
+            val responseImage = repository.searchImage(searchText,"recency")
+            val responseVideo = repository.searchVideo(searchText,"recency")
+
+            //DTO : 데이터 전송 오브젝트
+            val bodyImage = responseImage.body()
+            val bodyVideo = responseVideo.body()
+
+            _myPosts.value = bodyImage?.documents
+            metadata = bodyImage?.metaData
         }
     }
 }
