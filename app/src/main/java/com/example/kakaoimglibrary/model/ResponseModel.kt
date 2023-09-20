@@ -8,4 +8,5 @@ data class ResponseModel(
     val title : String,
     val dateTime : String,
     val thumbnailUri : String,
+    val isBookmark : Boolean = false
 ): Parcelable

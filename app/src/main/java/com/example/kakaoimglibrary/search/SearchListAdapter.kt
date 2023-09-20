@@ -54,22 +54,16 @@ class SearchListAdapter(
                 .placeholder(R.drawable.loading) // 이미지 로딩 중 사진
                 .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
                 .into(ivItem)
+            btnBookmark.isSelected = item.isBookmark
 
-
-//            btnBookmark.isSelected = item.isBookmark
-//            Glide.with(itemView).load(item.url)
-//                .placeholder(R.drawable.test_cat) // 이미지를 로딩하기 전
-//                .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
-//                .into(ivItem)
-//
-//            btnBookmark.setOnClickListener { isSelected ->
-//                onBookmarkChecked(
-//                    item.copy(
-//                        isBookmark = !item.isBookmark
-//                    ),
-//                    adapterPosition
-//                )
-//            }
+            btnBookmark.setOnClickListener { isSelected ->
+                onBookmarkChecked(
+                    item.copy(
+                        isBookmark = !item.isBookmark
+                    ),
+                    adapterPosition
+                )
+            }
         }
     }
 

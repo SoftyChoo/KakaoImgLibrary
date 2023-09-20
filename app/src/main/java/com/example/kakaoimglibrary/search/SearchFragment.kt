@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import com.example.kakaoimglibrary.databinding.FragmentSearchBinding
 import com.example.kakaoimglibrary.main.SearchState
 import com.example.kakaoimglibrary.main.SharedViewModel
+import com.example.kakaoimglibrary.model.ResponseModel
 
 class SearchFragment : Fragment() {
     companion object {
@@ -28,12 +29,12 @@ class SearchFragment : Fragment() {
     private val listAdapter by lazy {
         SearchListAdapter(
             onBookmarkChecked = { item, position ->
+                modifySearchItem(item,position)
 //                if (item) {
 //                    addToBookmarkTab(item,EntryType.ADD.name)
 //                } else {
 //                    removeToBookmarkTab(item,EntryType.REMOVE.name)
 //                }
-//                modifySearchItem(item,position)
             }
         )
     }
@@ -68,26 +69,26 @@ class SearchFragment : Fragment() {
     }
 
     private fun initModel() = with(viewModel) { // ViewModel의 Livedata 변동 시 List 갱신
-        myPosts.observe(viewLifecycleOwner, Observer {
+        list.observe(viewLifecycleOwner, Observer {
             listAdapter.submitList(it)
         })
-        activityViewModel.searchState.observe(viewLifecycleOwner, Observer { state ->
-            when(state){
-                is SearchState.modifySearch -> modifySearchItem(state.searchModel, null)
-            }
-        })
+//        activityViewModel.searchState.observe(viewLifecycleOwner, Observer { state ->
+//            when(state){
+//                is SearchState.modifySearch -> modifySearchItem(state.searchModel, null)
+//            }
+//        })
     }
-    private fun modifySearchItem(item: SearchModel, position: Int?) {
-//        viewModel.modifySearchModel(item,position)
-    }
-
-    private fun removeToBookmarkTab(item: SearchModel, name: String) {
-        activityViewModel.updateBookmarkState(item,name)
+    private fun modifySearchItem(item: ResponseModel, position: Int?) {
+        viewModel.modifyList(item,position)
     }
 
-    private fun addToBookmarkTab(item: SearchModel, name: String) {
-        activityViewModel.updateBookmarkState(item,name)
-    }
+//    private fun removeToBookmarkTab(item: ResponseModel, name: String) {
+//        activityViewModel.updateBookmarkState(item,name)
+//    }
+
+//    private fun addToBookmarkTab(item: ResponseModel, name: String) {
+//        activityViewModel.updateBookmarkState(item,name)
+//    }
 
 
     override fun onDestroyView() {
