@@ -8,26 +8,27 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kakaoimglibrary.R
 import com.example.kakaoimglibrary.databinding.ImageItemBinding
+import com.example.kakaoimglibrary.importAPI.ImageSearchModel
 
 class SearchListAdapter(
-    private val onBookmarkChecked: (SearchModel, Int) -> Unit
-) : ListAdapter<SearchModel, SearchListAdapter.ViewHolder>(
-    object : DiffUtil.ItemCallback<SearchModel>() {
+    private val onBookmarkChecked: (ImageSearchModel.Documents, Int) -> Unit
+) : ListAdapter<ImageSearchModel.Documents, SearchListAdapter.ViewHolder>(
+    object : DiffUtil.ItemCallback<ImageSearchModel.Documents>() {
         override fun areItemsTheSame(
-            oldItem: SearchModel,
-            newItem: SearchModel
+            oldItem: ImageSearchModel.Documents,
+            newItem: ImageSearchModel.Documents
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.thumbnail_url == newItem.thumbnail_url
         }
 
         override fun areContentsTheSame(
-            oldItem: SearchModel,
-            newItem: SearchModel
+            oldItem: ImageSearchModel.Documents,
+            newItem: ImageSearchModel.Documents
         ): Boolean {
             return oldItem == newItem
         }
     }
-){
+) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {// item 생성
         return ViewHolder(
             ImageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
@@ -42,26 +43,32 @@ class SearchListAdapter(
 
     class ViewHolder(
         private val binding: ImageItemBinding,
-        private val onBookmarkChecked: (SearchModel, Int) -> Unit
+        private val onBookmarkChecked: (ImageSearchModel.Documents, Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: SearchModel) = with(binding) {
-            tvTitle.text = item.title
+        fun bind(item: ImageSearchModel.Documents) = with(binding) {
+            tvTitle.text = item.display_sitename
             tvTime.text = item.datetime
-            btnBookmark.isSelected = item.isBookmark
-            Glide.with(itemView).load(item.url)
+            Glide.with(itemView).load(item.thumbnail_url)
                 .placeholder(R.drawable.test_cat) // 이미지를 로딩하기 전
                 .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
                 .into(ivItem)
 
-            btnBookmark.setOnClickListener { isSelected ->
-                onBookmarkChecked(
-                    item.copy(
-                        isBookmark = !item.isBookmark
-                    ),
-                    adapterPosition
-                )
-            }
+
+//            btnBookmark.isSelected = item.isBookmark
+//            Glide.with(itemView).load(item.url)
+//                .placeholder(R.drawable.test_cat) // 이미지를 로딩하기 전
+//                .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
+//                .into(ivItem)
+//
+//            btnBookmark.setOnClickListener { isSelected ->
+//                onBookmarkChecked(
+//                    item.copy(
+//                        isBookmark = !item.isBookmark
+//                    ),
+//                    adapterPosition
+//                )
+//            }
         }
     }
 

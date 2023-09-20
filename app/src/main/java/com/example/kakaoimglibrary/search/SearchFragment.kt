@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -12,7 +13,6 @@ import com.example.kakaoimglibrary.databinding.FragmentSearchBinding
 import com.example.kakaoimglibrary.main.EntryType
 import com.example.kakaoimglibrary.main.SearchState
 import com.example.kakaoimglibrary.main.SharedViewModel
-import java.util.concurrent.atomic.AtomicLong
 
 class SearchFragment : Fragment() {
     companion object {
@@ -22,18 +22,20 @@ class SearchFragment : Fragment() {
     private lateinit var _binding: FragmentSearchBinding
     private val binding get() = _binding
 
-    private val viewModel: SearchViewModel by viewModels { SearchViewModelFactory(AtomicLong(1L)) }
+
+    private val repository = Repository()
+    private val viewModel: SearchViewModel by viewModels { SearchViewModelFactory(repository) }
     private val activityViewModel : SharedViewModel by activityViewModels()
 
     private val listAdapter by lazy {
         SearchListAdapter(
             onBookmarkChecked = { item, position ->
-                if (item.isBookmark) {
-                    addToBookmarkTab(item,EntryType.ADD.name)
-                } else {
-                    removeToBookmarkTab(item,EntryType.REMOVE.name)
-                }
-                modifySearchItem(item,position)
+//                if (item) {
+//                    addToBookmarkTab(item,EntryType.ADD.name)
+//                } else {
+//                    removeToBookmarkTab(item,EntryType.REMOVE.name)
+//                }
+//                modifySearchItem(item,position)
             }
         )
     }
@@ -55,10 +57,20 @@ class SearchFragment : Fragment() {
 
     private fun initView() = with(binding) {
         recyclerView.adapter = listAdapter
+
+        searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                query?.let { viewModel.searchImage(it) }
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
     }
 
     private fun initModel() = with(viewModel) { // ViewModel의 Livedata 변동 시 List 갱신
-        list.observe(viewLifecycleOwner, Observer {
+        myPosts.observe(viewLifecycleOwner, Observer {
             listAdapter.submitList(it)
         })
         activityViewModel.searchState.observe(viewLifecycleOwner, Observer { state ->
@@ -68,7 +80,7 @@ class SearchFragment : Fragment() {
         })
     }
     private fun modifySearchItem(item: SearchModel, position: Int?) {
-        viewModel.modifySearchModel(item,position)
+//        viewModel.modifySearchModel(item,position)
     }
 
     private fun removeToBookmarkTab(item: SearchModel, name: String) {
