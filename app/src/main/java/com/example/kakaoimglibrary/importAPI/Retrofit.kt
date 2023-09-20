@@ -8,7 +8,6 @@ import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface Retrofit {
-
     @GET("v2/search/image")
     suspend fun searchImage(
         @Header("Authorization") apiKey: String = Constants.AUTH_HEADER,

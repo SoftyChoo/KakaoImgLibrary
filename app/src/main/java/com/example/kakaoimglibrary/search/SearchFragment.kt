@@ -22,8 +22,7 @@ class SearchFragment : Fragment() {
     private val binding get() = _binding
 
 
-    private val repository = Repository()
-    private val viewModel: SearchViewModel by viewModels { SearchViewModelFactory(repository) }
+    private val viewModel: SearchViewModel by viewModels { SearchViewModelFactory() }
     private val activityViewModel : SharedViewModel by activityViewModels()
 
     private val listAdapter by lazy {

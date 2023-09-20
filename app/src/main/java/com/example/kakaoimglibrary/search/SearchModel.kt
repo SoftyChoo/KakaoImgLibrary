@@ -12,6 +12,7 @@ data class SearchModel(
     val url: String,
     val isBookmark: Boolean
 ) : Parcelable
+
 fun SearchModel.toBookmarkModel() : BookmarkModel{
     return BookmarkModel(
         id = id ,

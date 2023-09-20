@@ -5,9 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import java.lang.IllegalArgumentException
 import java.util.concurrent.atomic.AtomicLong
 
-class SearchViewModelFactory(
-    private val repository: Repository
-) : ViewModelProvider.Factory {
+class SearchViewModelFactory() : ViewModelProvider.Factory {
+
+    private val repository = Repository()
 
     override fun <T: ViewModel> create(modelClass: Class<T>): T {
 
