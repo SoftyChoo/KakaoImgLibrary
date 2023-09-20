@@ -17,7 +17,7 @@ class BookMarkListAdapter(
             oldItem: BookmarkModel,
             newItem: BookmarkModel
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.thumbnailUri == newItem.thumbnailUri
         }
 
         override fun areContentsTheSame(
@@ -46,9 +46,9 @@ class BookMarkListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: BookmarkModel) = with(binding) {
             tvTitle.text = item.title
-            tvTime.text = item.datetime
+            tvTime.text = item.dateTime
             btnBookmark.isSelected = item.isBookmark
-            Glide.with(itemView).load(item.url)
+            Glide.with(itemView).load(item.thumbnailUri)
                 .placeholder(R.drawable.test_cat) // 이미지를 로딩하기 전
                 .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
                 .into(ivItem)

@@ -1,7 +1,7 @@
 package com.example.kakaoimglibrary.main
 
 enum class EntryType {
-    ADD, EDIT, REMOVE;
+    ADD, REMOVE;
     companion object {
         fun from(name: String?): EntryType? {
             return EntryType.values().find {
