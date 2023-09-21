@@ -14,15 +14,15 @@ class SearchViewModel(
     private val _list : MutableLiveData<List<SearchModel>> = MutableLiveData()
     val list : LiveData<List<SearchModel>> get()= _list
 
-//    private var metadata : ImageSearchModel.MetaData? = null
-
+    private var searchPage = 1
+    private var searchNextPageDataText = ""
 
     fun searchItems(searchText : String){
+        searchPage = 1
+        searchNextPageDataText = searchText
         viewModelScope.launch {
-            val responseData = repository.responseData(searchText,"recency")
-
+            val responseData = repository.responseData(searchText,"recency", searchPage, true)
             _list.value = responseData.toMutableList()
-//            metadata = bodyImage?.metaData
         }
     }
 
@@ -40,6 +40,15 @@ class SearchViewModel(
             it.thumbnailUri == searchModel.thumbnailUri
         }
         return currentList?.indexOf(findByURL)
+    }
+
+    fun searchNextPageData() {
+        searchPage++
+        viewModelScope.launch {
+            val responseData = repository.responseData(searchNextPageDataText,"recency", searchPage,false)
+            _list.value = responseData.toMutableList()
+        }
+
     }
 
 //    fun searchItems(searchText : String){

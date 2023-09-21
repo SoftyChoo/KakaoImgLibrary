@@ -60,7 +60,7 @@ class SearchListAdapter(
             tvTitle.text = item.title
             tvTime.text = customDatetime
             Glide.with(itemView).load(item.thumbnailUri)
-                .placeholder(R.drawable.loading) // 이미지 로딩 중 사진
+                .placeholder(R.drawable.loading_img) // 이미지 로딩 중 사진
                 .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
                 .into(ivItem)
             btnBookmark.isSelected = item.isBookmark

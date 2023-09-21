@@ -8,50 +8,50 @@ import com.example.kakaoimglibrary.model.VideoSearchModel
 import retrofit2.Response
 
 class Repository {
-    suspend fun searchImage(query: String, sort: String): Response<ImageSearchModel> {
-        return RetrofitClient.api.searchImage(query = query, sort = sort, page = 1, size = 20)
+    val responseList: MutableList<SearchModel> = mutableListOf() // img, video 통합할 리스트 생성
+
+    suspend fun searchImage(query: String, sort: String, page: Int): Response<ImageSearchModel> {
+        return RetrofitClient.api.searchImage(query = query, sort = sort, page = page, size = 20)
     }
 
-    suspend fun searchVideo(query: String, sort: String): Response<VideoSearchModel> {
-        return RetrofitClient.api.searchVideo(query = query, sort = sort, page = 1, size = 20)
+    suspend fun searchVideo(query: String, sort: String, page: Int): Response<VideoSearchModel> {
+        return RetrofitClient.api.searchVideo(query = query, sort = sort, page = page, size = 20)
     }
 
     var isImageSearchFinished = false
     var isVideoSearchFinished = false
 
-    suspend fun responseData(query: String, sort: String): MutableList<SearchModel> {
-        val responseList: MutableList<SearchModel> = mutableListOf() // img, video 통합할 리스트 생성
-        val getImageApi = searchImage(query, sort)
-        val getVideoApi = searchVideo(query, sort)
+    suspend fun responseData(query: String, sort: String, page: Int, isNew : Boolean): MutableList<SearchModel> {
+        val getImageApi = searchImage(query, sort, page)
+        val getVideoApi = searchVideo(query, sort, page)
+
+        if (isNew){
+            responseList.clear()
+        }
 
         isImageSearchFinished = true
         isVideoSearchFinished = true
 
-        if (getImageApi.isSuccessful && getVideoApi.isSuccessful ) { // retrofit 통신 둘 다 받아왔을 경우 시
+        if (getImageApi.isSuccessful && getVideoApi.isSuccessful) { // retrofit 통신 둘 다 받아왔을 경우 시
+
+
+            getVideoApi.body()?.documents?.videoToResponseModel()?.let {
+                responseList.addAll(it.toMutableList())
+                isVideoSearchFinished = true
+            }
 
             getImageApi.body()?.documents?.imageToResponseModel()?.let {
                 responseList.addAll(it.toMutableList())
 
                 isImageSearchFinished = true
             }
-            getVideoApi.body()?.documents?.videoToResponseModel()?.let {
-                responseList.addAll(it.toMutableList())
-                isVideoSearchFinished = true
-            }
 
-            responseList.sortedByDescending { it.dateTime } // 날짜 순 정렬
+
+            responseList.sortByDescending { it.dateTime } // 날짜 순 정렬
         }
         return responseList
 
-//        return if(isImageSearchFinished && isVideoSearchFinished){
-//            responseList.sortedByDescending {it.dateTime}
-//            responseList
-//        } else{
-//            val emptyList : MutableList<SearchModel> = mutableListOf()
-//            emptyList
-//        }
     }
-
 
     private fun MutableList<ImageSearchModel.Documents>.imageToResponseModel(): MutableList<SearchModel> {
         val list: MutableList<SearchModel> = mutableListOf()
@@ -82,5 +82,4 @@ class Repository {
         }
         return list
     }
-
 }

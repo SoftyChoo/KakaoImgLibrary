@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -84,14 +83,14 @@ class SearchFragment : Fragment() {
                     val itemTotalCount = recyclerView.adapter!!.itemCount-1
 
                     if(lastItemPosition == itemTotalCount){
-                        Toast.makeText(context,"최하단 도착",Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context,"Next Page",Toast.LENGTH_SHORT).show()
                         progressBar.visibility = View.VISIBLE
                         val handler = Handler()
                         handler.postDelayed({
                             progressBar.visibility = View.GONE
-                        }, 2000)
-//
-//                        viewModel.doSearch( )
+                        }, 1000)
+
+                        viewModel.searchNextPageData() // viewModel에서 새로운 페이지의 정보를 추가
 
                     }
 //
