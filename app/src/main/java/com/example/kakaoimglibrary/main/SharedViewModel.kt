@@ -12,6 +12,8 @@ class SharedViewModel : ViewModel() {
     private val _bookmarkState: MutableLiveData<BookmarkState> = MutableLiveData()
     private val _searchState: MutableLiveData<SearchState> = MutableLiveData()
 
+
+
     // 읽기 전용
     val bookmarkState: LiveData<BookmarkState> get() = _bookmarkState
     val searchState: LiveData<SearchState> get() = _searchState

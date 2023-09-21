@@ -31,4 +31,8 @@ class BookmarkViewModel : ViewModel() {
     fun List<BookmarkModel>.findIndex(bookmarkModel: BookmarkModel): Int {
         return indexOfFirst { it.thumbnailUri == bookmarkModel.thumbnailUri } // indexOfFirst : 가장 먼저 찾는 값 | 없으면 -1 return
     }
+
+    fun loadBookmarkModel(it: List<BookmarkModel>) {
+        _list.value = it
+    }
 }

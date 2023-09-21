@@ -25,6 +25,7 @@ class SearchFragment : Fragment() {
 
 
     private val viewModel: SearchViewModel by viewModels { SearchViewModelFactory() }
+
     private val activityViewModel: SharedViewModel by activityViewModels()
 
     private val listAdapter by lazy {
