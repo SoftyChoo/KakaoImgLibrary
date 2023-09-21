@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.bookmark
+package com.example.kakaoimglibrary.ui.bookmark
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.Glide
 import com.example.kakaoimglibrary.R
 import com.example.kakaoimglibrary.databinding.BookmarkImageItemBinding
+import com.example.kakaoimglibrary.model.BookmarkModel
 
 class BookMarkListAdapter(
     private val onBookmarkChecked: (BookmarkModel, Int) -> Unit
@@ -49,7 +50,7 @@ class BookMarkListAdapter(
             tvTime.text = item.dateTime
             btnBookmark.isSelected = item.isBookmark
             Glide.with(itemView).load(item.thumbnailUri)
-                .placeholder(R.drawable.test_cat) // 이미지를 로딩하기 전
+                .placeholder(R.drawable.loading_img) // 이미지를 로딩하기 전
                 .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
                 .into(ivItem)
 

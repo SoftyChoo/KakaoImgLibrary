@@ -1,7 +1,6 @@
-package com.example.kakaoimglibrary.bookmark
+package com.example.kakaoimglibrary.model
 
 import android.os.Parcelable
-import com.example.kakaoimglibrary.model.SearchModel
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
@@ -11,7 +10,6 @@ data class BookmarkModel(
     val thumbnailUri : String,
     val isBookmark : Boolean
 ) : Parcelable
-
 fun BookmarkModel.toSearchModel(): SearchModel {
     return SearchModel(
         title = title,

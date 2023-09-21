@@ -1,29 +1,19 @@
-package com.example.kakaoimglibrary.model
+package com.example.kakaoimglibrary.data.model
 
 import com.google.gson.annotations.SerializedName
 
 data class ImageSearchModel(
     @SerializedName("documents")
-    var documents: MutableList<Documents>, // 안정성 : 수정할 수 없게
+    val documents: MutableList<Documents>, // 안정성 : 수정할 수 없게
 
     @SerializedName("meta")
     val metaData: MetaData?
 ) {
     data class Documents(
 
-        val collection: String,
-
-        val thumbnail_url: String,
-
         val image_url: String,
 
-        val width: Int,
-
-        val height: Int,
-
         val display_sitename: String,
-
-        val doc_url: String,
 
         val datetime: String,
     )

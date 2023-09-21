@@ -2,8 +2,6 @@ package com.example.kakaoimglibrary.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.viewpager2.widget.ViewPager2
-import com.example.kakaoimglibrary.search.SearchFragment
 import com.example.kakaoimglibrary.databinding.ActivityMainBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -21,19 +19,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() = with(binding) {
         viewPager.adapter = viewPagerAdapter
-
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                if(viewPagerAdapter.getFragment(position) is SearchFragment){
-                    // 프래그먼트별 이벤트
-                }
-                else{
-                    // 처리
-                }
-            }
-        })
-
         // TabLayout x ViewPager2
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.setText(viewPagerAdapter.getTitle(position))
@@ -42,7 +27,5 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-
     }
-
 }

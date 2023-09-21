@@ -1,7 +1,8 @@
-package com.example.kakaoimglibrary.importAPI
+package com.example.kakaoimglibrary.data.api
 
-import com.example.kakaoimglibrary.model.ImageSearchModel
-import com.example.kakaoimglibrary.model.VideoSearchModel
+import com.example.kakaoimglibrary.Constants
+import com.example.kakaoimglibrary.data.model.ImageSearchModel
+import com.example.kakaoimglibrary.data.model.VideoSearchModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header

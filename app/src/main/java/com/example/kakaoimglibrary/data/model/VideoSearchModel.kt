@@ -1,10 +1,10 @@
-package com.example.kakaoimglibrary.model
+package com.example.kakaoimglibrary.data.model
 
 import com.google.gson.annotations.SerializedName
 
 data class VideoSearchModel(
     @SerializedName("documents")
-    var documents: MutableList<Documents>, // 안정성 : 수정할 수 없게
+    val documents: MutableList<Documents>, // 안정성 : 수정할 수 없게
 
     @SerializedName("meta")
     val metaData: MetaData?
@@ -13,15 +13,9 @@ data class VideoSearchModel(
 
         val title: String,
 
-        val url: String,
-
         val datetime: String,
 
-        val play_time: Int,
-
         val thumbnail: String,
-
-        val author: String
     )
 
     data class MetaData(

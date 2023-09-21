@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.importAPI
+package com.example.kakaoimglibrary
 
 class Constants {
     companion object{
@@ -7,10 +7,5 @@ class Constants {
         const val BASE_URL = "https://dapi.kakao.com"
 
         const val AUTH_HEADER = "KakaoAK $REST_API_KEY"
-
-        const val TYPE_IMAGE = 0
-
-        const val TYPE_VIDEO = 1
-        // 개인 API 사용
     }
 }

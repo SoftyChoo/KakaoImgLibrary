@@ -1,10 +1,12 @@
-package com.example.kakaoimglibrary.search
+package com.example.kakaoimglibrary.viewmodel.search
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kakaoimglibrary.model.SearchModel
+import com.example.kakaoimglibrary.data.Repository
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
@@ -17,6 +19,7 @@ class SearchViewModel(
     private var searchPage = 1
     private var searchNextPageDataText = ""
 
+    // 매핑된 List(Image, Video)를 가져옴
     fun searchItems(searchText : String){
         searchPage = 1
         searchNextPageDataText = searchText
@@ -26,42 +29,32 @@ class SearchViewModel(
         }
     }
 
-    fun modifyList(item: SearchModel, position: Int?) {
-        val currentList = list.value?.toMutableList()
-
-        val findPosition = position ?: findIndex(item)
-        findPosition?.let { currentList?.set(it, item) }
-        _list.value = currentList
-    }
-
-    fun findIndex(searchModel: SearchModel) : Int?{
-        val currentList = list.value?.toMutableList()
-        val findByURL = currentList?.find {
-            it.thumbnailUri == searchModel.thumbnailUri
-        }
-        return currentList?.indexOf(findByURL)
-    }
-
+    // 다음 페이지 가져오기
     fun searchNextPageData() {
         searchPage++
         viewModelScope.launch {
             val responseData = repository.responseData(searchNextPageDataText,"recency", searchPage,false)
             _list.value = responseData.toMutableList()
         }
-
     }
 
-//    fun searchItems(searchText : String){
-//        viewModelScope.launch {
-//            val responseImage = repository.searchImage(searchText,"recency")
-//            val responseVideo = repository.searchVideo(searchText,"recency")
-//
-//            //DTO : 데이터 전송 오브젝트
-//            val bodyImage = responseImage.body()
-//            val bodyVideo = responseVideo.body()
-//
-//            _myPosts.value = bodyImage?.documents
-//            metadata = bodyImage?.metaData
-//        }
-//    }
+    // 리스트 수정
+    fun modifyList(item: SearchModel, position: Int?) {
+        val currentList = list.value?.toMutableList()
+        val findPosition = position ?: findIndex(item)
+        if (findPosition != null && findPosition != -1) // 현재 List에 BookmarkItem이 없을 때 예외처리
+        {
+            currentList?.set(findPosition, item)
+        }
+        _list.value = currentList
+    }
+
+    // 일치하는 데이터 찾기
+    private fun findIndex(searchModel: SearchModel) : Int?{
+        val currentList = list.value?.toMutableList()
+        val findByURL = currentList?.find {
+            it.thumbnailUri == searchModel.thumbnailUri
+        }
+        return currentList?.indexOf(findByURL)
+    }
 }

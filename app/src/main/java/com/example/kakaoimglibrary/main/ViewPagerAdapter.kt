@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.kakaoimglibrary.R
-import com.example.kakaoimglibrary.search.SearchFragment
-import com.example.kakaoimglibrary.bookmark.BookmarkFragment
+import com.example.kakaoimglibrary.ui.search.SearchFragment
+import com.example.kakaoimglibrary.ui.bookmark.BookmarkFragment
 
 class ViewPagerAdapter(
     fragmentActivity: FragmentActivity

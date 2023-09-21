@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.search
+package com.example.kakaoimglibrary.ui.search
 
 import android.os.Bundle
 import android.os.Handler
@@ -18,6 +18,8 @@ import com.example.kakaoimglibrary.main.EntryType
 import com.example.kakaoimglibrary.main.SearchState
 import com.example.kakaoimglibrary.main.SharedViewModel
 import com.example.kakaoimglibrary.model.SearchModel
+import com.example.kakaoimglibrary.viewmodel.search.SearchViewModel
+import com.example.kakaoimglibrary.viewmodel.search.SearchViewModelFactory
 
 class SearchFragment : Fragment() {
     companion object {
@@ -26,7 +28,6 @@ class SearchFragment : Fragment() {
 
     private lateinit var _binding: FragmentSearchBinding
     private val binding get() = _binding
-
 
     private val viewModel: SearchViewModel by viewModels { SearchViewModelFactory() }
 
@@ -49,7 +50,6 @@ class SearchFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         _binding = FragmentSearchBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -81,8 +81,8 @@ class SearchFragment : Fragment() {
 
                     val lastItemPosition = (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
                     val itemTotalCount = recyclerView.adapter!!.itemCount-1
+                    if(lastItemPosition == itemTotalCount){ // 최하단 판별 기준
 
-                    if(lastItemPosition == itemTotalCount){
                         Toast.makeText(context,"Next Page",Toast.LENGTH_SHORT).show()
                         progressBar.visibility = View.VISIBLE
                         val handler = Handler()
@@ -93,7 +93,6 @@ class SearchFragment : Fragment() {
                         viewModel.searchNextPageData() // viewModel에서 새로운 페이지의 정보를 추가
 
                     }
-//
                 }
             }
         )
@@ -105,7 +104,7 @@ class SearchFragment : Fragment() {
         })
         activityViewModel.searchState.observe(viewLifecycleOwner, Observer { state ->
             when(state){
-                is SearchState.modifySearch -> modifySearchItem(state.searchModel, null)
+                is SearchState.ModifySearch -> modifySearchItem(state.searchModel, null)
             }
         })
     }
@@ -121,13 +120,6 @@ class SearchFragment : Fragment() {
     private fun addToBookmarkTab(item: SearchModel, name: String) {
         activityViewModel.updateBookmarkState(item,name)
     }
-
-
-
-
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

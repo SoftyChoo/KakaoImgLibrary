@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.search
+package com.example.kakaoimglibrary.ui.search
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,9 +9,6 @@ import com.bumptech.glide.Glide
 import com.example.kakaoimglibrary.R
 import com.example.kakaoimglibrary.databinding.ImageItemBinding
 import com.example.kakaoimglibrary.model.SearchModel
-import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 class SearchListAdapter(
     private val onBookmarkChecked: (SearchModel, Int) -> Unit
@@ -32,18 +29,17 @@ class SearchListAdapter(
         }
     }
 ) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {// item 생성
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             ImageItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
             onBookmarkChecked
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) { // binding 해줌
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) { // binding
         val item = getItem(position) // ListAdapter의 메소드 getItem
         holder.bind(item)
     }
-
 
     class ViewHolder(
         private val binding: ImageItemBinding,
@@ -51,21 +47,15 @@ class SearchListAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SearchModel) = with(binding) {
-
-            // DateTime 파싱 후 포맷
-            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
-            val outputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-            val customDatetime = inputFormat.parse(item.dateTime)?.let { outputFormat.format(it) }
-
             tvTitle.text = item.title
-            tvTime.text = customDatetime
+            tvTime.text = item.dateTime
             Glide.with(itemView).load(item.thumbnailUri)
                 .placeholder(R.drawable.loading_img) // 이미지 로딩 중 사진
-                .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때
+                .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때 사진
                 .into(ivItem)
             btnBookmark.isSelected = item.isBookmark
 
-            btnBookmark.setOnClickListener { isSelected ->
+            btnBookmark.setOnClickListener {
                 onBookmarkChecked(
                     item.copy(
                         isBookmark = !item.isBookmark
@@ -75,5 +65,4 @@ class SearchListAdapter(
             }
         }
     }
-
 }

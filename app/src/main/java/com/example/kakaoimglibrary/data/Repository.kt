@@ -1,10 +1,9 @@
-package com.example.kakaoimglibrary.search
+package com.example.kakaoimglibrary.data
 
-import android.widget.Toast
-import com.example.kakaoimglibrary.model.ImageSearchModel
-import com.example.kakaoimglibrary.importAPI.RetrofitClient
+import com.example.kakaoimglibrary.utils.formatDateTime
+import com.example.kakaoimglibrary.data.model.ImageSearchModel
 import com.example.kakaoimglibrary.model.SearchModel
-import com.example.kakaoimglibrary.model.VideoSearchModel
+import com.example.kakaoimglibrary.data.model.VideoSearchModel
 import retrofit2.Response
 
 class Repository {
@@ -18,39 +17,27 @@ class Repository {
         return RetrofitClient.api.searchVideo(query = query, sort = sort, page = page, size = 20)
     }
 
-    var isImageSearchFinished = false
-    var isVideoSearchFinished = false
-
     suspend fun responseData(query: String, sort: String, page: Int, isNew : Boolean): MutableList<SearchModel> {
         val getImageApi = searchImage(query, sort, page)
         val getVideoApi = searchVideo(query, sort, page)
 
-        if (isNew){
+        if (isNew){ // 새로운 검색일 경우 ListClear
             responseList.clear()
         }
 
-        isImageSearchFinished = true
-        isVideoSearchFinished = true
-
-        if (getImageApi.isSuccessful && getVideoApi.isSuccessful) { // retrofit 통신 둘 다 받아왔을 경우 시
-
+        if (getImageApi.isSuccessful && getVideoApi.isSuccessful) { // retrofit 통신 둘 다 받아왔을 경우
 
             getVideoApi.body()?.documents?.videoToResponseModel()?.let {
                 responseList.addAll(it.toMutableList())
-                isVideoSearchFinished = true
             }
 
             getImageApi.body()?.documents?.imageToResponseModel()?.let {
                 responseList.addAll(it.toMutableList())
-
-                isImageSearchFinished = true
             }
-
 
             responseList.sortByDescending { it.dateTime } // 날짜 순 정렬
         }
         return responseList
-
     }
 
     private fun MutableList<ImageSearchModel.Documents>.imageToResponseModel(): MutableList<SearchModel> {
@@ -60,7 +47,7 @@ class Repository {
                 i,
                 SearchModel(
                     title = "[Image] ${this[i].display_sitename}",
-                    dateTime = this[i].datetime,
+                    dateTime = formatDateTime(this[i].datetime), // 날짜 포맷 함수 적용 후 매핑
                     thumbnailUri = this[i].image_url
                 )
             )
@@ -75,7 +62,7 @@ class Repository {
                 i,
                 SearchModel(
                     title = "[Video] ${this[i].title}",
-                    dateTime = this[i].datetime,
+                    dateTime = formatDateTime(this[i].datetime), // 날짜 포맷 함수 적용 후 매핑
                     thumbnailUri = this[i].thumbnail
                 )
             )
