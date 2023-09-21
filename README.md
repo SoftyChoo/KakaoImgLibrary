@@ -1,9 +1,23 @@
+<!--
+
 ![header](https://capsule-render.vercel.app/api?type=cylinder&color=0:fffc00,100:ffffff&height=230&section=header&text=Kakao%20Img%20Library&fontColor=3e2723&fontSize=70&animation=fadeIn&fontAlignY=50&desc=MVVM%20Architecture&descAlignY=70)
 
+<br/>
+<br/>
 
+# 프로그램 설명
+This project is provides image search and bookmarking functions created with Kakao motifs.
+Users can search for images and add the desired images to their bookmarks.
 
-## 프로그램 설명
-이 프로젝트는 이미지 검색 및 북마크 기능을 제공하는 애플리케이션입니다. 사용자는 이미지를 검색하고 원하는 이미지를 북마크에 추가할 수 있습니다.
+<br/>
+
+# Style & Icon
+<img src = "https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/32aa3e8a-30c1-4df2-8de5-bf793a4c2ef3" width = "15%"><img width="206" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/bb92bd75-fbf6-497c-96ca-4d6433c91ae1">
+
+For completeness and quality, we made it by referring to the color codes and icons used in Kakao.
+
+<br/>
+
 
 ## 폴더 및 파일 구조
 - `data/`: 애플리케이션의 데이터 로직과 API 호출을 처리합니다.
@@ -38,3 +52,8 @@
 
 ## MVVM 패턴
 이 프로젝트는 MVVM(Model-View-ViewModel) 디자인 패턴이 적용되었습니다. View와 Business Logic이 분리되어 있어 유지 보수와 확장성이 높아집니다.
+
+
+# Library
+
+-->
