@@ -1,14 +1,19 @@
 package com.example.kakaoimglibrary.search
 
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isInvisible
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.kakaoimglibrary.databinding.FragmentSearchBinding
 import com.example.kakaoimglibrary.main.EntryType
 import com.example.kakaoimglibrary.main.SearchState
@@ -69,6 +74,30 @@ class SearchFragment : Fragment() {
                 return true
             }
         })
+        // infinite Scroll
+        recyclerView.addOnScrollListener(
+            object : RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    super.onScrolled(recyclerView, dx, dy)
+
+                    val lastItemPosition = (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
+                    val itemTotalCount = recyclerView.adapter!!.itemCount-1
+
+                    if(lastItemPosition == itemTotalCount){
+                        Toast.makeText(context,"최하단 도착",Toast.LENGTH_SHORT).show()
+                        progressBar.visibility = View.VISIBLE
+                        val handler = Handler()
+                        handler.postDelayed({
+                            progressBar.visibility = View.GONE
+                        }, 2000)
+//
+//                        viewModel.doSearch( )
+
+                    }
+//
+                }
+            }
+        )
     }
 
     private fun initModel() = with(viewModel) { // ViewModel의 Livedata 변동 시 List 갱신
@@ -93,6 +122,12 @@ class SearchFragment : Fragment() {
     private fun addToBookmarkTab(item: SearchModel, name: String) {
         activityViewModel.updateBookmarkState(item,name)
     }
+
+
+
+
+
+
 
 
     override fun onDestroyView() {

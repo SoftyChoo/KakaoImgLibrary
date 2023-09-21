@@ -9,6 +9,9 @@ import com.bumptech.glide.Glide
 import com.example.kakaoimglibrary.R
 import com.example.kakaoimglibrary.databinding.ImageItemBinding
 import com.example.kakaoimglibrary.model.SearchModel
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 class SearchListAdapter(
     private val onBookmarkChecked: (SearchModel, Int) -> Unit
@@ -41,14 +44,21 @@ class SearchListAdapter(
         holder.bind(item)
     }
 
+
     class ViewHolder(
         private val binding: ImageItemBinding,
         private val onBookmarkChecked: (SearchModel, Int) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: SearchModel) = with(binding) {
+
+            // DateTime 파싱 후 포맷
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val customDatetime = inputFormat.parse(item.dateTime)?.let { outputFormat.format(it) }
+
             tvTitle.text = item.title
-            tvTime.text = item.dateTime
+            tvTime.text = customDatetime
             Glide.with(itemView).load(item.thumbnailUri)
                 .placeholder(R.drawable.loading) // 이미지 로딩 중 사진
                 .error(R.drawable.baseline_error_outline_24) // 이미지를 불러오지 못했을 때

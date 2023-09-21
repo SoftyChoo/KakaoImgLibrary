@@ -9,11 +9,11 @@ import retrofit2.Response
 
 class Repository {
     suspend fun searchImage(query: String, sort: String): Response<ImageSearchModel> {
-        return RetrofitClient.api.searchImage(query = query, sort = sort, page = 2, size = 10)
+        return RetrofitClient.api.searchImage(query = query, sort = sort, page = 1, size = 20)
     }
 
     suspend fun searchVideo(query: String, sort: String): Response<VideoSearchModel> {
-        return RetrofitClient.api.searchVideo(query = query, sort = sort, page = 2, size = 10)
+        return RetrofitClient.api.searchVideo(query = query, sort = sort, page = 1, size = 20)
     }
 
     var isImageSearchFinished = false
@@ -27,26 +27,29 @@ class Repository {
         isImageSearchFinished = true
         isVideoSearchFinished = true
 
-        if (getImageApi.isSuccessful) { // retrofit 통신 성공했을 시
+        if (getImageApi.isSuccessful && getVideoApi.isSuccessful ) { // retrofit 통신 둘 다 받아왔을 경우 시
+
             getImageApi.body()?.documents?.imageToResponseModel()?.let {
                 responseList.addAll(it.toMutableList())
+
                 isImageSearchFinished = true
             }
-        }
-
-        if (getVideoApi.isSuccessful) {
             getVideoApi.body()?.documents?.videoToResponseModel()?.let {
                 responseList.addAll(it.toMutableList())
                 isVideoSearchFinished = true
             }
+
+            responseList.sortedByDescending { it.dateTime } // 날짜 순 정렬
         }
-        return if(isImageSearchFinished && isVideoSearchFinished){
-            responseList.sortByDescending {it.dateTime}
-            responseList
-        } else{
-            val emptyList : MutableList<SearchModel> = mutableListOf()
-            emptyList
-        }
+        return responseList
+
+//        return if(isImageSearchFinished && isVideoSearchFinished){
+//            responseList.sortedByDescending {it.dateTime}
+//            responseList
+//        } else{
+//            val emptyList : MutableList<SearchModel> = mutableListOf()
+//            emptyList
+//        }
     }
 
 

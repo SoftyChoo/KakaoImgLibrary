@@ -21,9 +21,9 @@
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_bar"
-            app:queryHint="@string/search_description"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:queryHint="@string/search_description" />
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -41,6 +41,17 @@
         app:layout_constraintVertical_bias="0.0"
         app:spanCount="2"
         tools:listitem="@layout/image_item" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
