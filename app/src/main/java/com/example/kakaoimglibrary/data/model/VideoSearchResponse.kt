@@ -17,7 +17,7 @@ data class VideoSearchResponse(
         @SerializedName("datetime")
         val datetime: String,
 
-        @SerializedName("thumnail")
+        @SerializedName("thumbnail")
         val thumbnail: String,
     )
 
