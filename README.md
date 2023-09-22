@@ -15,7 +15,7 @@
 
 <br/>
 
-# 폴더 및 파일 구조
+# File Structure
 - `common/`
     - `utils/`
         - `CommonUtils.kt` : 프로젝트 전반에 사용되는 유틸리티 함수 모음
@@ -52,7 +52,7 @@
         - `SearchViewModel`: 검색 화면의 데이터 및 로직 처리를 담당
         - `SearchViewModelFactory`: SearchViewModel 생성을 위한 Factory 클래스
     
-
+<br/>
 
 ## MVVM 패턴
 이 프로젝트는 MVVM(Model-View-ViewModel) 디자인 패턴이 적용되었습니다. View와 Business Logic이 분리되어 있어 유지 보수와 확장성이 높아집니다.
