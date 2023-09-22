@@ -11,7 +11,7 @@ object RetrofitClient { // Client
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    val api : com.example.kakaoimglibrary.data.api.Retrofit by lazy {
+    val api: com.example.kakaoimglibrary.data.api.Retrofit by lazy {
         retrofit.create(
             com.example.kakaoimglibrary.data.api.Retrofit::class.java
         )

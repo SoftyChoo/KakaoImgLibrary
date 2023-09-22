@@ -34,6 +34,7 @@ class SharedViewModel : ViewModel() {
         }
     }
 }
+
 sealed interface SearchState {
     data class ModifySearch(val searchModel: SearchModel) : SearchState
 }

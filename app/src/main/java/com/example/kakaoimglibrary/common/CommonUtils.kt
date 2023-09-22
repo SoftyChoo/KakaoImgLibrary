@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 // 날짜 형식 변경 함수
-fun formatDateTime(dateTime : String): String{
+fun formatDateTime(dateTime: String): String {
     val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.getDefault())
     val outputFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
     return inputFormat.parse(dateTime).let { outputFormat.format(it) }
