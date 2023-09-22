@@ -8,7 +8,7 @@
 
 <br/>
 
-# Style & Icon
+# Style & Logo
 <img src = "https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/32aa3e8a-30c1-4df2-8de5-bf793a4c2ef3" width = "15%"><img width="206" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/bb92bd75-fbf6-497c-96ca-4d6433c91ae1">
 
 디테일과 완성도를 위해 실제 카카오 어플리케이션에서 사용하는 아이콘과 색상을 참조해서 만들었습니다.
