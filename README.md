@@ -1,25 +1,33 @@
-<!--
-
 ![header](https://capsule-render.vercel.app/api?type=cylinder&color=0:fffc00,100:ffffff&height=230&section=header&text=Kakao%20Img%20Library&fontColor=3e2723&fontSize=70&animation=fadeIn&fontAlignY=50&desc=MVVM%20Architecture&descAlignY=70)
 
 <br/>
 <br/>
 
-# 프로그램 설명
-This project is provides image search and bookmarking functions created with Kakao motifs.
-Users can search for images and add the desired images to their bookmarks.
+# Project
+이 프로젝트는 카카오뱅크 과제를 모티브로 제작하였으며 유저는 검색을 통해 이미지와 영상을 북마크에 추가할 수 있습니다.
 
 <br/>
 
 # Style & Icon
 <img src = "https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/32aa3e8a-30c1-4df2-8de5-bf793a4c2ef3" width = "15%"><img width="206" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/bb92bd75-fbf6-497c-96ca-4d6433c91ae1">
 
-For completeness and quality, we made it by referring to the color codes and icons used in Kakao.
+디테일과 완성도를 위해 실제 카카오 어플리케이션에서 사용하는 아이콘과 색상을 참조해서 만들었습니다.
 
 <br/>
 
 
 ## 폴더 및 파일 구조
+- `common/` :
+    - `utils/` : 
+        - `CommonUtils` : 프로젝트 전반에 사용되는 유틸리티 함수 모음'
+    - 
+
+
+
+
+
+
+
 - `data/`: 애플리케이션의 데이터 로직과 API 호출을 처리합니다.
     - `api/`
         - `Retrofit_interface`: Retrofit을 통한 API 호출 인터페이스 정의
@@ -56,4 +64,3 @@ For completeness and quality, we made it by referring to the color codes and ico
 
 # Library
 
--->
