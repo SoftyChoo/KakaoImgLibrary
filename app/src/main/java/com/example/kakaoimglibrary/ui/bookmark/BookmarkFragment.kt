@@ -15,8 +15,8 @@ import com.example.kakaoimglibrary.common.BookmarkState
 import com.example.kakaoimglibrary.common.EntryType
 import com.example.kakaoimglibrary.common.SharedViewModel
 import com.example.kakaoimglibrary.model.BookmarkModel
-import com.example.kakaoimglibrary.common.loadBookmarkData
-import com.example.kakaoimglibrary.common.saveBookmarkData
+import com.example.kakaoimglibrary.common.utils.loadBookmarkData
+import com.example.kakaoimglibrary.common.utils.saveBookmarkData
 
 class BookmarkFragment : Fragment() {
     companion object {

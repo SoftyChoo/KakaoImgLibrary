@@ -1,6 +1,6 @@
 package com.example.kakaoimglibrary.data
 
-import com.example.kakaoimglibrary.common.formatDateTime
+import com.example.kakaoimglibrary.common.utils.formatDateTime
 import com.example.kakaoimglibrary.data.model.ImageSearchResponse
 import com.example.kakaoimglibrary.model.SearchModel
 import com.example.kakaoimglibrary.data.model.VideoSearchResponse
