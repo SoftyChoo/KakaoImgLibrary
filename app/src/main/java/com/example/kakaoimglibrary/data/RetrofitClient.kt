@@ -1,6 +1,6 @@
 package com.example.kakaoimglibrary.data
 
-import com.example.kakaoimglibrary.Constants.Companion.BASE_URL
+import com.example.kakaoimglibrary.common.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -11,7 +11,7 @@ object RetrofitClient { // Client
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
-    val api : com.example.kakaoimglibrary.data.api.Retrofit by lazy {
+    val api: com.example.kakaoimglibrary.data.api.Retrofit by lazy {
         retrofit.create(
             com.example.kakaoimglibrary.data.api.Retrofit::class.java
         )

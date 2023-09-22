@@ -1,12 +1,17 @@
 package com.example.kakaoimglibrary.viewmodel.search
 
+import android.app.Activity
 import android.util.Log
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.kakaoimglibrary.model.SearchModel
 import com.example.kakaoimglibrary.data.Repository
+import com.example.kakaoimglibrary.main.MainActivity
+import com.example.kakaoimglibrary.ui.search.SearchFragment
 import kotlinx.coroutines.launch
 
 class SearchViewModel(
@@ -24,8 +29,13 @@ class SearchViewModel(
         searchPage = 1
         searchNextPageDataText = searchText
         viewModelScope.launch {
-            val responseData = repository.responseData(searchText,"recency", searchPage, true)
-            _list.value = responseData.toMutableList()
+            kotlin.runCatching { // 완료
+                val responseData = repository.responseData(searchText,"recency", searchPage, true)
+                responseData.sortByDescending { it.dateTime } // 날짜 순 정렬
+                _list.value = responseData.toMutableList()
+            }.onFailure {
+                // 실패 시 동작 처리
+            }
         }
     }
 

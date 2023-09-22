@@ -1,9 +1,8 @@
 package com.example.kakaoimglibrary.data.api
 
-import com.example.kakaoimglibrary.Constants
-import com.example.kakaoimglibrary.data.model.ImageSearchModel
-import com.example.kakaoimglibrary.data.model.VideoSearchModel
-import retrofit2.Response
+import com.example.kakaoimglibrary.common.Constants
+import com.example.kakaoimglibrary.data.model.ImageSearchResponse
+import com.example.kakaoimglibrary.data.model.VideoSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -16,7 +15,7 @@ interface Retrofit {
         @Query("sort") sort: String,
         @Query("page") page: Int,
         @Query("size") size: Int
-    ): Response<ImageSearchModel>
+    ): ImageSearchResponse
 
     @GET("v2/search/vclip")
     suspend fun searchVideo(
@@ -25,5 +24,5 @@ interface Retrofit {
         @Query("sort") sort: String,
         @Query("page") page: Int,
         @Query("size") size: Int
-    ): Response<VideoSearchModel>
+    ): VideoSearchResponse
 }

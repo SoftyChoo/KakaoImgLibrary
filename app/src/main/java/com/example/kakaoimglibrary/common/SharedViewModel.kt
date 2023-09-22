@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.main
+package com.example.kakaoimglibrary.common
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -29,10 +29,12 @@ class SharedViewModel : ViewModel() {
         when (entryType) {
             EntryType.ADD.name -> Unit
             EntryType.REMOVE.name -> Unit
-            EntryType.EDIT.name -> _searchState.value = SearchState.ModifySearch(item.toSearchModel())
+            EntryType.EDIT.name -> _searchState.value =
+                SearchState.ModifySearch(item.toSearchModel())
         }
     }
 }
+
 sealed interface SearchState {
     data class ModifySearch(val searchModel: SearchModel) : SearchState
 }

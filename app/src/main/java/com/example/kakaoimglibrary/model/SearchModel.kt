@@ -10,6 +10,7 @@ data class SearchModel(
     val thumbnailUri: String,
     val isBookmark: Boolean = false
 ) : Parcelable
+
 fun SearchModel.toBookmarkModel(): BookmarkModel {
     return BookmarkModel(
         title = title,
