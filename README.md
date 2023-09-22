@@ -4,19 +4,19 @@
 
 <br/>
 
-# 📌 Project
+# Project
 이 프로젝트는 카카오뱅크 과제를 모티브로 제작한 개인 프로젝트입니다.<br/>
 유저는 검색을 통해 이미지와 영상을 북마크에 추가할 수 있습니다.
 
 <br/>
 
-# ⚙️ Architecture
+# Architecture
 - ViewModel, LiveData, Repository을 사용한 MVVM 구조
 - 유지 보수성과 확장성을 높이기 위해 View와 Business Logic을 분리 하였습니다.
 
 <br/>
 
-# 🎨 Style & Logo
+# Style & Logo
 - 디테일과 완성도를 위해 실제 카카오 어플리케이션에서 사용하는 아이콘과 색상을 참조해서 만들었습니다.
 
 <img src = "https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/32aa3e8a-30c1-4df2-8de5-bf793a4c2ef3" height = "200"><img height="200" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/94019312-db92-4592-8110-3a6243324ea7"><img height="200" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/bb92bd75-fbf6-497c-96ca-4d6433c91ae1">
@@ -24,7 +24,7 @@
 
 <br/>
 
-# 💡 Tech
+# Tech
 **Android Jetpack**
 - Data Binding
 - LiveData
