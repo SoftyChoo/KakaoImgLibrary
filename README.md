@@ -5,12 +5,19 @@
 <br/>
 
 # Project
-이 프로젝트는 카카오뱅크 과제를 모티브로 제작한 개인 프로젝트입니다.<br/>
-유저는 검색을 통해 이미지와 영상을 북마크에 추가할 수 있습니다.
+이 프로젝트는 카카오뱅크 과제를 모티브로 제작한 개인 프로젝트입니다.<br/><br/>
 
+검색 API는 Kakao Developers Open API인 다음 검색을 사용하였습니다. <br/>
+유저는 검색을 통해 키워드에 맞는 이미지와 영상을 검색할 수 있습니다. <br/>
+또한 왼쪽 상단의 Bookmark 버튼을 눌러 북마크 목록에 추가할 수 있습니다. <br/> 
+이렇게 저장된 정보는 SharedPreference로 기기내에 저장되어 앱이 종료돼도 재실행 시 다시 로드 됩니다. <br/>
+infinite Scroll을 사용해 RecyclerView의 하단에 도착하면 자동으로 다음 페이지를 받아옵니다. <br/>
+스크롤이 최상단이 아닐때만 나오는 FloatingActionButton으로 리스트의 최상단으로 이동할 수 있습니다.
+ 
 <br/>
 
 # Architecture
+### MVVM
 - ViewModel, LiveData, Repository을 사용한 MVVM 구조
 - 유지 보수성과 확장성을 높이기 위해 View와 Business Logic을 분리 하였습니다.
 
@@ -89,6 +96,9 @@
 <br/>
 
 <img width="33%" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/0fe98af6-923f-45ff-a383-f867a53774f6"><img width="33%" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/60b5df2e-c58a-4da2-a51a-6049f9c184f0"><img width="33%" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/3171a0d1-d614-4bf2-aa76-aa6b51aebd3d"><img width="33%" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/d044236f-9715-40e2-bb75-ff06e218a3b0"><img width="33%" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/f53d7269-bd40-4510-b01d-47ffb4113725"><img width="33%" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/e45e54e1-856b-404d-bccd-f7232536a884">
+
+![ImageLibrary](https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/394dc3ba-6bf9-4ecc-83e9-9350266fbf9e)
+
 
 
 
