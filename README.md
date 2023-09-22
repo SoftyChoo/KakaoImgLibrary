@@ -24,17 +24,17 @@
 <br/>
 
 # Tech
-Android Jetpack
+**Android Jetpack**
 - Data Binding
 - LiveData
 - ViewModel
 
-Third Party Libraries
+**Third Party Libraries**
 - Retrofit2
 - Glide
 - Kotlin Coroutine
 
-UI Frameworks and Components
+**UI Frameworks and Components**
 - ConstraintLayout
 - Material Design
 - RecyclerView
@@ -42,6 +42,9 @@ UI Frameworks and Components
 - ViewPager2
 - TabLayout
 - SearchView
+
+**Data Source** 
+- Search data retrieved using  [Kakao Developers Open API](https://developers.kakao.com/product/search)
 
 <br/>
 
