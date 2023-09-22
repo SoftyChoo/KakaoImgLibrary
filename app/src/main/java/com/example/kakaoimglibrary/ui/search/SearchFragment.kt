@@ -79,6 +79,10 @@ class SearchFragment : Fragment() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                     super.onScrolled(recyclerView, dx, dy)
 
+                    //fab show(), hide()
+                    if (dy > 0) fabSearch.show()
+                    else fabSearch.hide()
+
                     val lastItemPosition = (recyclerView.layoutManager as LinearLayoutManager?)!!.findLastCompletelyVisibleItemPosition()
                     val itemTotalCount = recyclerView.adapter!!.itemCount-1
                     if(lastItemPosition == itemTotalCount){ // 최하단 판별 기준
@@ -96,6 +100,11 @@ class SearchFragment : Fragment() {
                 }
             }
         )
+
+        // fab
+        fabSearch.setOnClickListener {
+            recyclerView.smoothScrollToPosition(0) // smooth를 넣어 스르르 올라가게
+        }
     }
 
     private fun initModel() = with(viewModel) { // ViewModel의 Livedata 변동 시 List 갱신

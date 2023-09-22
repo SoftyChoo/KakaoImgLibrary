@@ -7,7 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class SearchModel(
     val title: String,
     val dateTime: String,
-    val thumbnailUri: String,
+    val thumbnailUri: String?,
     val isBookmark: Boolean = false
 ) : Parcelable
 
