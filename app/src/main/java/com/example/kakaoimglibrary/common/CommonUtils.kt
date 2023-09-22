@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.utils
+package com.example.kakaoimglibrary.common
 
 import android.content.Context
 import com.example.kakaoimglibrary.model.BookmarkModel

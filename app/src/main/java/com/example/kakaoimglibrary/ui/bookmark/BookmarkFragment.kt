@@ -1,6 +1,5 @@
 package com.example.kakaoimglibrary.ui.bookmark
 
-import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,14 +11,12 @@ import androidx.lifecycle.Observer
 import com.example.kakaoimglibrary.viewmodel.bookmark.BookmarkViewModel
 import com.example.kakaoimglibrary.viewmodel.bookmark.BookmarkViewModelFactory
 import com.example.kakaoimglibrary.databinding.FragmentBookmarkBinding
-import com.example.kakaoimglibrary.main.BookmarkState
-import com.example.kakaoimglibrary.main.EntryType
-import com.example.kakaoimglibrary.main.SharedViewModel
+import com.example.kakaoimglibrary.common.BookmarkState
+import com.example.kakaoimglibrary.common.EntryType
+import com.example.kakaoimglibrary.common.SharedViewModel
 import com.example.kakaoimglibrary.model.BookmarkModel
-import com.example.kakaoimglibrary.utils.loadBookmarkData
-import com.example.kakaoimglibrary.utils.saveBookmarkData
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.example.kakaoimglibrary.common.loadBookmarkData
+import com.example.kakaoimglibrary.common.saveBookmarkData
 
 class BookmarkFragment : Fragment() {
     companion object {

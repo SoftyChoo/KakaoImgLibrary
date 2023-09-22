@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary
+package com.example.kakaoimglibrary.common
 
 class Constants {
     companion object{

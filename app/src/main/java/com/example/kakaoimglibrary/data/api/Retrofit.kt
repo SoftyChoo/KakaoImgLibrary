@@ -1,6 +1,6 @@
 package com.example.kakaoimglibrary.data.api
 
-import com.example.kakaoimglibrary.Constants
+import com.example.kakaoimglibrary.common.Constants
 import com.example.kakaoimglibrary.data.model.ImageSearchModel
 import com.example.kakaoimglibrary.data.model.VideoSearchModel
 import retrofit2.Response

@@ -1,13 +1,14 @@
 package com.example.kakaoimglibrary.data
 
-import com.example.kakaoimglibrary.utils.formatDateTime
+import com.example.kakaoimglibrary.common.formatDateTime
 import com.example.kakaoimglibrary.data.model.ImageSearchModel
 import com.example.kakaoimglibrary.model.SearchModel
 import com.example.kakaoimglibrary.data.model.VideoSearchModel
 import retrofit2.Response
 
+// Test Code
 class Repository {
-    val responseList: MutableList<SearchModel> = mutableListOf() // img, video 통합할 리스트 생성
+    private val responseList: MutableList<SearchModel> = mutableListOf() // img, video 통합할 리스트 생성
 
     suspend fun searchImage(query: String, sort: String, page: Int): Response<ImageSearchModel> {
         return RetrofitClient.api.searchImage(query = query, sort = sort, page = page, size = 20)

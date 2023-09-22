@@ -14,9 +14,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kakaoimglibrary.databinding.FragmentSearchBinding
-import com.example.kakaoimglibrary.main.EntryType
-import com.example.kakaoimglibrary.main.SearchState
-import com.example.kakaoimglibrary.main.SharedViewModel
+import com.example.kakaoimglibrary.common.EntryType
+import com.example.kakaoimglibrary.common.SearchState
+import com.example.kakaoimglibrary.common.SharedViewModel
 import com.example.kakaoimglibrary.model.SearchModel
 import com.example.kakaoimglibrary.viewmodel.search.SearchViewModel
 import com.example.kakaoimglibrary.viewmodel.search.SearchViewModelFactory

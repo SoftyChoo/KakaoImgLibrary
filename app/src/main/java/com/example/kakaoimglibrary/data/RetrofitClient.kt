@@ -1,6 +1,6 @@
 package com.example.kakaoimglibrary.data
 
-import com.example.kakaoimglibrary.Constants.Companion.BASE_URL
+import com.example.kakaoimglibrary.common.Constants.Companion.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
