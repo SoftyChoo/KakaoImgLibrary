@@ -8,10 +8,38 @@
 
 <br/>
 
+# Architecture
+- ViewModel, LiveData, Repository을 사용한 MVVM 구조
+- 유지 보수성과 확장성을 높이기 위해 View와 Business Logic을 분리 하였습니다.
+
+<br/>
+
 # Style & Logo
+- 디테일과 완성도를 위해 실제 카카오 어플리케이션에서 사용하는 아이콘과 색상을 참조해서 만들었습니다.
+
 <img src = "https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/32aa3e8a-30c1-4df2-8de5-bf793a4c2ef3" width = "15%"><img width="206" alt="image" src="https://github.com/SoftyChoo/KakaoImgLibrary/assets/132810978/bb92bd75-fbf6-497c-96ca-4d6433c91ae1">
 
-디테일과 완성도를 위해 실제 카카오 어플리케이션에서 사용하는 아이콘과 색상을 참조해서 만들었습니다.
+<br/>
+
+# Tech
+Android Jetpack
+- Data Binding
+- LiveData
+- ViewModel
+
+Third Party Libraries
+- Retrofit2
+- Glide
+- Kotlin Coroutine
+
+UI Frameworks and Components
+- ConstraintLayout
+- Material Design
+- RecyclerView
+- Fragment
+- ViewPager2
+- TabLayout
+- SearchView
 
 <br/>
 
@@ -53,10 +81,3 @@
         - `SearchViewModelFactory`: SearchViewModel 생성을 위한 Factory 클래스
     
 <br/>
-
-## MVVM 패턴
-이 프로젝트는 MVVM(Model-View-ViewModel) 디자인 패턴이 적용되었습니다. View와 Business Logic이 분리되어 있어 유지 보수와 확장성이 높아집니다.
-
-
-# Library
-
