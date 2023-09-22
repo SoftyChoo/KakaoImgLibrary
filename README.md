@@ -36,6 +36,7 @@ infinite Scroll을 사용해 RecyclerView의 하단에 도착하면 자동으로
 - Data Binding
 - LiveData
 - ViewModel
+- SharedPreferences
 
 **Third Party Libraries**
 - Retrofit2
