@@ -19,8 +19,24 @@
 ## 폴더 및 파일 구조
 - `common/` :
     - `utils/` : 
-        - `CommonUtils` : 프로젝트 전반에 사용되는 유틸리티 함수 모음'
-    - 
+        - `CommonUtils.kt` : 프로젝트 전반에 사용되는 유틸리티 함수 모음
+    - `Constans` : 프로젝트 전반에 사용되는 상수 값 모음
+    - `EntryType` : 프로젝트 전반에 사용되는 진입타입 결정
+    - `SharedViewModel.kt` : Fragment간 공유되는 데이터를 관리
+- `data/` :
+    - `api/` :
+        - `Retrofit` : Retrofit을 통한 API 호출 인터페이스 정의
+    - `model/` :
+        - `ImageSearchResponse` : 이미지 정보를 받아오는 데이터 모델
+        - `VideoSearchResponse` : 영상 정보를 받아오는 데이터 모델
+    - `Repository` :
+    - `RetrofitClient` : 
+- `main/`
+    - `MainActivity` :
+    - `MainTabs` :
+    - `ViewPagerAdapter` :
+    
+
 
 
 
