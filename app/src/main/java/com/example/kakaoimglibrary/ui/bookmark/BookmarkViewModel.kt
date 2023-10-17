@@ -1,9 +1,8 @@
-package com.example.kakaoimglibrary.viewmodel.bookmark
+package com.example.kakaoimglibrary.ui.bookmark
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kakaoimglibrary.model.BookmarkModel
 
 class BookmarkViewModel : ViewModel() {
 

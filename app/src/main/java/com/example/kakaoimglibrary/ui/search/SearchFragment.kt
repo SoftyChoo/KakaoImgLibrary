@@ -14,12 +14,9 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kakaoimglibrary.databinding.FragmentSearchBinding
-import com.example.kakaoimglibrary.common.EntryType
-import com.example.kakaoimglibrary.common.SearchState
-import com.example.kakaoimglibrary.common.SharedViewModel
-import com.example.kakaoimglibrary.model.SearchModel
-import com.example.kakaoimglibrary.viewmodel.search.SearchViewModel
-import com.example.kakaoimglibrary.viewmodel.search.SearchViewModelFactory
+import com.example.kakaoimglibrary.utils.EntryType
+import com.example.kakaoimglibrary.ui.main.SearchState
+import com.example.kakaoimglibrary.ui.main.SharedViewModel
 
 class SearchFragment : Fragment() {
     companion object {

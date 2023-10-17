@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kakaoimglibrary.R
 import com.example.kakaoimglibrary.databinding.ImageItemBinding
-import com.example.kakaoimglibrary.model.SearchModel
 
 class SearchListAdapter(
     private val onBookmarkChecked: (SearchModel, Int) -> Unit

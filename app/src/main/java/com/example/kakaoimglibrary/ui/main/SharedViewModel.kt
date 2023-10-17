@@ -1,12 +1,13 @@
-package com.example.kakaoimglibrary.common
+package com.example.kakaoimglibrary.ui.main
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kakaoimglibrary.model.BookmarkModel
-import com.example.kakaoimglibrary.model.toSearchModel
-import com.example.kakaoimglibrary.model.SearchModel
-import com.example.kakaoimglibrary.model.toBookmarkModel
+import com.example.kakaoimglibrary.utils.EntryType
+import com.example.kakaoimglibrary.ui.bookmark.BookmarkModel
+import com.example.kakaoimglibrary.ui.bookmark.toSearchModel
+import com.example.kakaoimglibrary.ui.search.SearchModel
+import com.example.kakaoimglibrary.ui.search.toBookmarkModel
 
 class SharedViewModel : ViewModel() {
     private val _bookmarkState: MutableLiveData<BookmarkState> = MutableLiveData()

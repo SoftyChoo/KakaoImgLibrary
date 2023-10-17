@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.main
+package com.example.kakaoimglibrary.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

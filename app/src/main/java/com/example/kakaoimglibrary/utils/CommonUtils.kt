@@ -1,7 +1,7 @@
-package com.example.kakaoimglibrary.common.utils
+package com.example.kakaoimglibrary.utils
 
 import android.content.Context
-import com.example.kakaoimglibrary.model.BookmarkModel
+import com.example.kakaoimglibrary.ui.bookmark.BookmarkModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.text.SimpleDateFormat
@@ -18,7 +18,7 @@ fun formatDateTime(dateTime: String): String {
 fun saveBookmarkData(context: Context, key: String, values: List<BookmarkModel>) {
     val gson = Gson()
     val json = gson.toJson(values)
-    val prefs = context?.getSharedPreferences("SETTINGS", Context.MODE_PRIVATE)
+    val prefs = context.getSharedPreferences("SETTINGS", Context.MODE_PRIVATE)
     val editor = prefs?.edit()
     editor?.putString(key, json)
     editor?.apply()
@@ -26,7 +26,7 @@ fun saveBookmarkData(context: Context, key: String, values: List<BookmarkModel>)
 
 // 데이터 로드
 fun loadBookmarkData(context: Context, key: String): List<BookmarkModel> {
-    val prefs = context?.getSharedPreferences("SETTINGS", Context.MODE_PRIVATE)
+    val prefs = context.getSharedPreferences("SETTINGS", Context.MODE_PRIVATE)
     val json = prefs?.getString(key, null)
 
     return if (json != null) {

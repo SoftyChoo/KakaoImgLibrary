@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.common
+package com.example.kakaoimglibrary.retrofit
 
 class Constants {
     companion object {

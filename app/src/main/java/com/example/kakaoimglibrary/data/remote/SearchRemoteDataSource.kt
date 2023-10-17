@@ -1,13 +1,13 @@
-package com.example.kakaoimglibrary.data.api
+package com.example.kakaoimglibrary.data.remote
 
-import com.example.kakaoimglibrary.common.Constants
+import com.example.kakaoimglibrary.retrofit.Constants
 import com.example.kakaoimglibrary.data.model.ImageSearchResponse
 import com.example.kakaoimglibrary.data.model.VideoSearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
 
-interface Retrofit {
+interface SearchRemoteDataSource {
     @GET("v2/search/image")
     suspend fun searchImage(
         @Header("Authorization") apiKey: String = Constants.AUTH_HEADER,

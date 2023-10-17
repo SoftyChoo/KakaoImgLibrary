@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.viewmodel.bookmark
+package com.example.kakaoimglibrary.ui.bookmark
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

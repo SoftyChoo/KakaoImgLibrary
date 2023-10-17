@@ -1,4 +1,4 @@
-package com.example.kakaoimglibrary.main
+package com.example.kakaoimglibrary.ui.main
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

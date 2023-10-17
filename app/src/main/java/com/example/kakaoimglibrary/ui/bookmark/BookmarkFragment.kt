@@ -8,15 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import com.example.kakaoimglibrary.viewmodel.bookmark.BookmarkViewModel
-import com.example.kakaoimglibrary.viewmodel.bookmark.BookmarkViewModelFactory
 import com.example.kakaoimglibrary.databinding.FragmentBookmarkBinding
-import com.example.kakaoimglibrary.common.BookmarkState
-import com.example.kakaoimglibrary.common.EntryType
-import com.example.kakaoimglibrary.common.SharedViewModel
-import com.example.kakaoimglibrary.model.BookmarkModel
-import com.example.kakaoimglibrary.common.utils.loadBookmarkData
-import com.example.kakaoimglibrary.common.utils.saveBookmarkData
+import com.example.kakaoimglibrary.ui.main.BookmarkState
+import com.example.kakaoimglibrary.utils.EntryType
+import com.example.kakaoimglibrary.ui.main.SharedViewModel
+import com.example.kakaoimglibrary.utils.loadBookmarkData
+import com.example.kakaoimglibrary.utils.saveBookmarkData
 
 class BookmarkFragment : Fragment() {
     companion object {
@@ -81,6 +78,10 @@ class BookmarkFragment : Fragment() {
             listAdapter.submitList(it)
             context?.let { context -> saveBookmarkData(context, PREFERENCES_KEY, it) } // SharedPreference 데이터 저장
         })
+        //bookmarkViewModel Obser
+
+
+        //
         activityViewModel.bookmarkState.observe(viewLifecycleOwner, Observer { state ->
             when (state) {
                 is BookmarkState.AddBookmark -> addBookmarkItem(state.bookmarkModel)
