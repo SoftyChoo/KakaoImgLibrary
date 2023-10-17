@@ -89,7 +89,7 @@ infinite Scroll을 사용해 RecyclerView의 하단에 도착하면 자동으로
 - `viewmodel/`: MVVM의 ViewModel을 포함하며, UI 로직과 데이터의 중개 역할을 합니다. LiveData를 사용하여 UI의 상태 및 데이터 변경을 관찰합니다. 비즈니스 로직이 구현되어 있습니다.
     - `bookmark/`
         - `BookmarkViewModel` : 북마크 화면의 데이터 및 로직 처리를 담당
-        - `BookmarkViewModel` : BookmarkViewModel 생성을 위한 Factory 클래스
+        - `BookmarkViewModelFactory` : BookmarkViewModel 생성을 위한 Factory 클래스
     - `search/`
         - `SearchViewModel`: 검색 화면의 데이터 및 로직 처리를 담당
         - `SearchViewModelFactory`: SearchViewModel 생성을 위한 Factory 클래스
